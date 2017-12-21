@@ -1,6 +1,6 @@
-class CreateContacs < ActiveRecord::Migration[5.1]
+class CreateContacts < ActiveRecord::Migration[5.1]
   def change
-    create_table :contacs do |t|
+    create_table :contacts do |t|
       t.string :family_name
       t.string :given_name
       t.references :company
