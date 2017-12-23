@@ -17,9 +17,8 @@ class NotesController < ApplicationController
   def create
     note_klass = params[:data][:type].underscore.classify.safe_constantize
     @note = note_klass.new(note_params)
-    @note.topic   = relationship_params[:topic]
-    @note.contact = relationship_params[:contact]
-    # binding.pry
+    @note.topic   = relationship_params[:topic]&.first
+    @note.contact = relationship_params[:contacts]&.first
 
     if @note.save
       render json: @note, status: :created, location: note_url(@note)
